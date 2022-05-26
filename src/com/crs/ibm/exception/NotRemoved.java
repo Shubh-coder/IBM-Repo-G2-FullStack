@@ -16,5 +16,5 @@ public class NotRemoved extends Exception{
 	public NotRemoved(String message) {
 		super(message);
 	}
-	
+
 }

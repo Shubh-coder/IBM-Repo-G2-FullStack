@@ -20,6 +20,6 @@ public interface UserInterface {
 	 * Method for fetching role of User
 	 * */
 	public void UserSelection(String user);
-	
-	
+
+
 }

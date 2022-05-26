@@ -24,8 +24,8 @@ public class AdminDAO implements AdminDAOInterface{
 
 	Scanner sc= new Scanner(System.in);
 	StudentDAOInterface sd = new StudentDAO();
-	
-	
+
+
 	Connection conn = null;
 	static int user_id; 
 	/**
@@ -35,105 +35,105 @@ public class AdminDAO implements AdminDAOInterface{
 	 */
 	public void approveStudent(String email)
 	{
-	  
 
-		 conn=DBUtils.getConnection();	
 
-		   PreparedStatement stmt = null;
-		   ResultSet rs=null; 
-		   
-		   try{
-			        
-			      stmt = conn.prepareStatement(SQLQueryConstant.APPROVAL);
-			        stmt.setString(1, email);
-		         int row= stmt.executeUpdate();
-			     System.out.println("Approved"+row);
-		         
-		         stmt.close();
-			      conn.close();
-			  
-			     
-			   }catch(Exception t){
-			      //Handle errors for Class.forName
-			      t.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			            stmt.close();
-			      }catch(SQLException se2){
-			      }// nothing we can do
-			      try{
-			         if(conn!=null)
-			            conn.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }//end finally try
-			   }//end try
-		
+		conn=DBUtils.getConnection();	
+
+		PreparedStatement stmt = null;
+		ResultSet rs=null; 
+
+		try{
+
+			stmt = conn.prepareStatement(SQLQueryConstant.APPROVAL);
+			stmt.setString(1, email);
+			int row= stmt.executeUpdate();
+			System.out.println("Approved"+row);
+
+			stmt.close();
+			conn.close();
+
+
+		}catch(Exception t){
+			//Handle errors for Class.forName
+			t.printStackTrace();
+		}finally{
+			//finally block used to close resources
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}//end finally try
+		}//end try
+
 	}
-	
-	
-	
-	
-	
-	
-	
-//	----------------------Appproval Registration ---------------------
-	
+
+
+
+
+
+
+
+	//	----------------------Appproval Registration ---------------------
+
 	public void registrationApproval(String name, String email, String password, String role) throws AlreadyRegister {
 		/**
 		 * Method to register new user to the user table 
 		 * @param name, email, password, role
 		 * @throws AlreadyRegister
 		 */
-		
-		 conn=DBUtils.getConnection();	
 
-		   PreparedStatement stmt = null;
-		   ResultSet rs=null; 
-		   
-		   try{
-			     		     
-			      stmt = conn.prepareStatement(SQLQueryConstant.REGISTRATION_USER);
-			        stmt.setString(1, name);
-		            stmt.setString(2, email);
-		            stmt.setString(3, password);
-		            stmt.setString(4, role);
-		            
+		conn=DBUtils.getConnection();	
 
-		            int rowaf=  stmt.executeUpdate();
-                   System.out.println(String.format("Row affected %d", rowaf));
-                   if (rowaf == 0) {
-                	   throw new AlreadyRegister();
-                   }
-			      stmt.close();
-			      conn.close();
-			  
-			     
-			   }catch(Exception t){
-			      //Handle errors for Class.forName
-			      t.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			            stmt.close();
-			      }catch(SQLException se2){
-			      }// nothing we can do
-			      try{
-			         if(conn!=null)
-			            conn.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }//end finally try
-			   }//end try
-			  
-		   
+		PreparedStatement stmt = null;
+		ResultSet rs=null; 
+
+		try{
+
+			stmt = conn.prepareStatement(SQLQueryConstant.REGISTRATION_USER);
+			stmt.setString(1, name);
+			stmt.setString(2, email);
+			stmt.setString(3, password);
+			stmt.setString(4, role);
+
+
+			int rowaf=  stmt.executeUpdate();
+			System.out.println(String.format("Row affected %d", rowaf));
+			if (rowaf == 0) {
+				throw new AlreadyRegister();
+			}
+			stmt.close();
+			conn.close();
+
+
+		}catch(Exception t){
+			//Handle errors for Class.forName
+			t.printStackTrace();
+		}finally{
+			//finally block used to close resources
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}//end finally try
+		}//end try
+
+
 	}
-	
-//--------------------------Authenticate ----------------------------------	
-	
+
+	//--------------------------Authenticate ----------------------------------	
+
 	public void authenticateUser(String email, String password) throws UserNotApproved {
 		/**
 		 * Method to authenticate the user 
@@ -144,84 +144,84 @@ public class AdminDAO implements AdminDAOInterface{
 		String databaseUsername=null;
 		String databasePassword=null;
 		String role=null;
-		 PreparedStatement stmt = null;
-		 conn=DBUtils.getConnection();	
-		 ResultSet rs=null;
-		 String status =null;
+		PreparedStatement stmt = null;
+		conn=DBUtils.getConnection();	
+		ResultSet rs=null;
+		String status =null;
 
-		   try {
-			   
-				   status = "select * from user where Email='" + email + "' && Password='" + password+ "' && approval=1'";
-				   String sql="select * from user where approval=1 && Email='" + email + "' && Password='" + password+ "' ";			   
-	      stmt = conn.prepareStatement(sql);
-	      rs = stmt.executeQuery();
-	    
+		try {
 
-	            // Check Username and PasswordSS
-	   try {
-		   
-	      String roll=null;
-		while (rs.next()) {
-	        databaseUsername = rs.getString("Email");
-	        databasePassword = rs.getString("Password");
-	  //      user_id = s.getInt();
-	        System.out.println(databaseUsername);
-	        System.out.println(databasePassword);
-	        roll =rs.getString("Role"); 
-	    }
+			status = "select * from user where Email='" + email + "' && Password='" + password+ "' && approval=1'";
+			String sql="select * from user where approval=1 && Email='" + email + "' && Password='" + password+ "' ";			   
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
 
-	    
-	    if (email.equals(databaseUsername) && password.equals(databasePassword)) {
-	        System.out.println("Successful Login!\n----");
-			us.UserSelection(roll);
-	    }else {
-//	    	throw new UserNotApproved(); 
-	    	throw new UserNotExists(); 
-	   
-	   }
-	   }
-				   
-	   
-	   catch(UserNotExists e) {
-		   System.out.println(e.getMessage());
-	   }
-		   
-	    }
-	   catch(SQLException se){
-		      //Handle errors for JDBC
-		      se.printStackTrace();
-		   }catch(Exception e){
-		      //Handle errors for Class.forName
-		      e.printStackTrace();
-		   }finally{
-		      //finally block used to close resources
-			   try {
-				   if(rs!=null)
-				    rs.close();
-			   }catch(Exception e3)
-			   {
-				   
-			   }
-		      try{
-		         if(stmt!=null)
-		            stmt.close();
-		      }catch(SQLException se2){
-		      }// nothing we can do
-		      try{
-		         if(conn!=null)
-		            conn.close();
-		      }catch(SQLException se){
-		         se.printStackTrace();
-		      }finally{
-		    	  System.out.println("   ");}//end finally try
-		      }
-		   }//end tryf
-		 
-	
+
+			// Check Username and PasswordSS
+			try {
+
+				String roll=null;
+				while (rs.next()) {
+					databaseUsername = rs.getString("Email");
+					databasePassword = rs.getString("Password");
+					//      user_id = s.getInt();
+					System.out.println(databaseUsername);
+					System.out.println(databasePassword);
+					roll =rs.getString("Role"); 
+				}
+
+
+				if (email.equals(databaseUsername) && password.equals(databasePassword)) {
+					System.out.println("Successful Login!\n----");
+					us.UserSelection(roll);
+				}else {
+					//	    	throw new UserNotApproved(); 
+					throw new UserNotExists(); 
+
+				}
+			}
+
+
+			catch(UserNotExists e) {
+				System.out.println(e.getMessage());
+			}
+
+		}
+		catch(SQLException se){
+			//Handle errors for JDBC
+			se.printStackTrace();
+		}catch(Exception e){
+			//Handle errors for Class.forName
+			e.printStackTrace();
+		}finally{
+			//finally block used to close resources
+			try {
+				if(rs!=null)
+					rs.close();
+			}catch(Exception e3)
+			{
+
+			}
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}finally{
+				System.out.println("   ");}//end finally try
+		}
+	}//end tryf
+
+
 
 	//------------------------ADD Course-------------------------------------
-	
-	
+
+
 	public void  addCourse(int csid,String csname,String cssec,String cstype,int csmax,double csprice,int csdur,int csprid) throws CourseNotAdded{
 		/**
 		 * Method to add courses to the course table 
@@ -229,62 +229,62 @@ public class AdminDAO implements AdminDAOInterface{
 		 * @throws CourseNotAdded
 		 */
 		conn=DBUtils.getConnection();	
-		   
-		   PreparedStatement stmt = null;
+
+		PreparedStatement stmt = null;
 		//   ResultSet rs=null; 
-            try {
-             		
-			      stmt = conn.prepareStatement(SQLQueryConstant.ADD_COURSE_ADMIN);
-			      System.out.println("");
-			      stmt.setInt(1,csid);
-			      stmt.setString(2, csname);
-		          stmt.setString(3,cssec);
-			      stmt.setString(4,cstype);
-			      stmt.setInt(5,csmax);
-			      stmt.setDouble(6,csprice);
-			      stmt.setInt(7,csdur);
-			      stmt.setInt(8,csprid); 
-                  int rowaf= stmt.executeUpdate();
-                   
-                  System.out.println(String.format("Row affected %d", rowaf));
-                  if (rowaf == 0) {
-               	   throw new CourseNotAdded();
-                  }
-			      stmt.close();
-			      conn.close();
-                  
-                  
-                  stmt.close();
-			      conn.close();
-			      
-			   }catch(SQLException se){
-			      //Handle errors for JDBC
-			      se.printStackTrace();
-			   }catch(Exception e){
-			      //Handle errors for Class.forName
-			      e.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			            stmt.close();
-			      }catch(SQLException se2){
-			      }// nothing we can do
-			      try{
-			         if(conn!=null)
-			            conn.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }//end finally try
-			   }//end try
-			   
+		try {
+
+			stmt = conn.prepareStatement(SQLQueryConstant.ADD_COURSE_ADMIN);
+			System.out.println("");
+			stmt.setInt(1,csid);
+			stmt.setString(2, csname);
+			stmt.setString(3,cssec);
+			stmt.setString(4,cstype);
+			stmt.setInt(5,csmax);
+			stmt.setDouble(6,csprice);
+			stmt.setInt(7,csdur);
+			stmt.setInt(8,csprid); 
+			int rowaf= stmt.executeUpdate();
+
+			System.out.println(String.format("Row affected %d", rowaf));
+			if (rowaf == 0) {
+				throw new CourseNotAdded();
+			}
+			stmt.close();
+			conn.close();
+
+
+			stmt.close();
+			conn.close();
+
+		}catch(SQLException se){
+			//Handle errors for JDBC
+			se.printStackTrace();
+		}catch(Exception e){
+			//Handle errors for Class.forName
+			e.printStackTrace();
+		}finally{
+			//finally block used to close resources
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}//end finally try
+		}//end try
+
 	}
 
-	
 
-//--------------------------------Delete course------------------------
-	
-	
+
+	//--------------------------------Delete course------------------------
+
+
 	public void deleteCourse (int deid) throws NotRemoved
 	{
 		/**
@@ -292,50 +292,50 @@ public class AdminDAO implements AdminDAOInterface{
 		 * @param course_id
 		 * @throws NotRemoved
 		 */
-		
+
 		conn=DBUtils.getConnection();	
-		   
-		   PreparedStatement stmt = null;
+
+		PreparedStatement stmt = null;
 		//   ResultSet rs=null; 
-		   try{
-			   
-		   String status = "select * from course where id="+deid;
-			   if ((status != null)){
-			      
-			      stmt = conn.prepareStatement(SQLQueryConstant.DELETE_COURSE_ADMIN);
-			      stmt.setInt(1, deid);
-			      int row=stmt.executeUpdate();
-			    //  rs=stmt.executeQuery();
-                 System.out.println("successfully deleted");
-                 if(row==0) {
-  				   throw new NotRemoved();}
-			      //rs.close();
-			      stmt.close();
-			      conn.close();
-			   } else 
+		try{
+
+			String status = "select * from course where id="+deid;
+			if ((status != null)){
+
+				stmt = conn.prepareStatement(SQLQueryConstant.DELETE_COURSE_ADMIN);
+				stmt.setInt(1, deid);
+				int row=stmt.executeUpdate();
+				//  rs=stmt.executeQuery();
+				System.out.println("successfully deleted");
+				if(row==0) {
+					throw new NotRemoved();}
+				//rs.close();
+				stmt.close();
+				conn.close();
+			} else 
 				throw new NotRemoved();
-			   }catch(NotRemoved e) {
-				   System.out.println(e);
-			   }catch(SQLException se){
-			      //Handle errors for JDBC
-			      se.printStackTrace();
-			   }catch(Exception e){
-			      //Handle errors for Class.forName
-			      e.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			            stmt.close();
-			      }catch(SQLException se2){
-			      }// nothing we can do
-			      try{
-			         if(conn!=null)
-			            conn.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }//end finally try
-			   }//end try
+		}catch(NotRemoved e) {
+			System.out.println(e);
+		}catch(SQLException se){
+			//Handle errors for JDBC
+			se.printStackTrace();
+		}catch(Exception e){
+			//Handle errors for Class.forName
+			e.printStackTrace();
+		}finally{
+			//finally block used to close resources
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}//end finally try
+		}//end try
 	}
 	public void assignProfessor() throws ProfessorNotAssigned {
 		/**
@@ -348,43 +348,43 @@ public class AdminDAO implements AdminDAOInterface{
 		System.out.println("enter to professor id whom you want to assign to the course:");
 		int prid = sc.nextInt();
 
-		 conn=DBUtils.getConnection();	
+		conn=DBUtils.getConnection();	
 
-		   PreparedStatement stmt = null;
-		   ResultSet rs=null; 
-		   
-		   try{
-			     System.out.println("assigning a professor fora course...");		     
-			      stmt = conn.prepareStatement(SQLQueryConstant.ASSIGN_PROFESSOR);
-			        stmt.setInt(1, prid);
-			        stmt.setInt(2, crid);
-		            
-		            int rowaf=  stmt.executeUpdate();
-                  System.out.println(String.format("Row affected %d", rowaf));
-                  if (rowaf == 0) {
-               	   throw new ProfessorNotAssigned();
-                  }
-			      stmt.close();
-			      conn.close();
-			  
-			     
-			   }catch(Exception t){
-			      //Handle errors for Class.forName
-			      t.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			            stmt.close();
-			      }catch(SQLException se2){
-			      }// nothing we can do
-			      try{
-			         if(conn!=null)
-			            conn.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }//end finally try
-			   }//end try
+		PreparedStatement stmt = null;
+		ResultSet rs=null; 
+
+		try{
+			System.out.println("assigning a professor fora course...");		     
+			stmt = conn.prepareStatement(SQLQueryConstant.ASSIGN_PROFESSOR);
+			stmt.setInt(1, prid);
+			stmt.setInt(2, crid);
+
+			int rowaf=  stmt.executeUpdate();
+			System.out.println(String.format("Row affected %d", rowaf));
+			if (rowaf == 0) {
+				throw new ProfessorNotAssigned();
+			}
+			stmt.close();
+			conn.close();
+
+
+		}catch(Exception t){
+			//Handle errors for Class.forName
+			t.printStackTrace();
+		}finally{
+			//finally block used to close resources
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}//end finally try
+		}//end try
 	}
 	public void allCourse() throws NoDataFound{
 		/**
@@ -392,72 +392,80 @@ public class AdminDAO implements AdminDAOInterface{
 		 * @exception NoDataFound
 		 */
 
-		 conn=DBUtils.getConnection();	
+		conn=DBUtils.getConnection();	
 
-		   PreparedStatement stmt = null;
-		   ResultSet rs=null; 
-		   
-		   try{
-			     System.out.println("Fetching all courses...");		     
-			      stmt = conn.prepareStatement(SQLQueryConstant.ALL_COURSES);
-		           rs=stmt.executeQuery();
-		           
-		             System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
-				     System.out.format("%14s %35s %30s %20s %25s %25s %20s %20s\n","id","Course Name","Course Section","Couse_Type","Maximum Student","Course Price","Course Duration","Professor Id");  
-				     System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"); 
-			         while(rs.next())
-				       {
-				    	   int id=rs.getInt("Id");
-				    	   String Course_Name = rs.getString("Course_Name");
-				    	   String Course_Section=rs.getString("Course_Section");
-				    	   String Course_Type=rs.getString("Course_Type");
-	                       String Maximum_Student = rs.getString("Max_Student");
-	                       String Course_Price = rs.getString("Course_Price");
-	                       int Course_Duration = rs.getInt("Course_duration");
-	                       int Professor_Id = rs.getInt("Professor_Id");
- 	                       System.out.println("");
-	         	 
-	                       System.out.format("%14s %35s %30s %20s %25s %25s %20s %20s\n",id,Course_Name,Course_Section,Course_Type,Maximum_Student,Course_Price,Course_Duration,Professor_Id);
-				       }
-			        System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-                   
-                  if (rs == null) {
-               	   throw new NoDataFound();
-                  }
-			      stmt.close();
-			      conn.close();
-			  
-			     
-			   }catch(Exception t){
-			      //Handle errors for Class.forName
-			      t.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			            stmt.close();
-			      }catch(SQLException se2){
-			      }// nothing we can do
-			      try{
-			         if(conn!=null)
-			            conn.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }finally{
-			    	  }//end finally try
-			      }
-			   }
+		PreparedStatement stmt = null;
+		ResultSet rs=null; 
+
+		try{
+			System.out.println("Fetching all courses...");		     
+			stmt = conn.prepareStatement(SQLQueryConstant.ALL_COURSES);
+			rs=stmt.executeQuery();
+
+			System.out.println("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- ");
+			System.out.format("%14s %35s %30s %20s %25s %25s %20s %20s\n","id","Course Name","Course Section","Couse_Type","Maximum Student","Course Price","Course Duration","Professor Id");  
+			System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"); 
+			while(rs.next())
+			{
+				int id=rs.getInt("Id");
+				String Course_Name = rs.getString("Course_Name");
+				String Course_Section=rs.getString("Course_Section");
+				String Course_Type=rs.getString("Course_Type");
+				String Maximum_Student = rs.getString("Max_Student");
+				String Course_Price = rs.getString("Course_Price");
+				int Course_Duration = rs.getInt("Course_duration");
+				int Professor_Id = rs.getInt("Professor_Id");
+				System.out.println("");
+
+				System.out.format("%14s %35s %30s %20s %25s %25s %20s %20s\n",id,Course_Name,Course_Section,Course_Type,Maximum_Student,Course_Price,Course_Duration,Professor_Id);
+			}
+			System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+			if (rs == null) {
+				throw new NoDataFound();
+			}
+			stmt.close();
+			conn.close();
+
+
+		}catch(Exception t){
+			//Handle errors for Class.forName
+			t.printStackTrace();
+		}finally{
+			//finally block used to close resources
+			try{
+				if(stmt!=null)
+					stmt.close();
+			}catch(SQLException se2){
+			}// nothing we can do
+			try{
+				if(conn!=null)
+					conn.close();
+			}catch(SQLException se){
+				se.printStackTrace();
+			}finally{
+			}//end finally try
+		}
+	}
+
+
+
+
+
 
 
 	@Override
 	public void allUser() {
 		// TODO Auto-generated method stub
-		
-	}
-	
-		  
-				
 
-		   
+	}
+
+
 }
-	
+
+
+
+
+
+
+

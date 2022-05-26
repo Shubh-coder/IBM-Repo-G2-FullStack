@@ -5,7 +5,7 @@ import com.crs.ibm.exception.CourseNotAdded;
 import com.crs.ibm.exception.GradeNotAssigned;
 import com.crs.ibm.exception.NoDataFound;
 import com.crs.ibm.exception.UserNotExists;
- 
+
 
 public interface ProfessorDAOInterface {
 
@@ -20,5 +20,5 @@ public interface ProfessorDAOInterface {
 	 * Method for the professor to add grades to the students
 	 * @param student_id and a grade
 	 */
-   
+
 }

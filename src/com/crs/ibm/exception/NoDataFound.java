@@ -9,10 +9,10 @@ package com.crs.ibm.exception;
  */
 public class NoDataFound extends  Exception {
 	public NoDataFound() {
-	super("Their is no data to fetch!");
+		super("Their is no data to fetch!");
 
-}
+	}
 	public NoDataFound(String message) {
 		super(message);
-}
+	}
 }

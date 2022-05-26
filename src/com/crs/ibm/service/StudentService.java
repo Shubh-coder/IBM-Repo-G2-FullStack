@@ -51,7 +51,7 @@ public class StudentService implements StudentInterface {
 		}catch(NotRegister e){
 			throw e;
 		}
-		
+
 	}
 	/**
 	 * Method for student to view the total fee for their courses
@@ -65,7 +65,7 @@ public class StudentService implements StudentInterface {
 			throw e;
 		}
 	}
-	
+
 	/**
 	 * Method for student to view their grades
 	 *@param srudent_id
@@ -79,21 +79,21 @@ public class StudentService implements StudentInterface {
 		}catch(GradeNotAssigned e) {
 			throw e;
 		}
-		
+
 	}
-	
+
 	/**
 	 * Method for student to Pay Fees
 	 *@param srudent_id , Payment_Mode, RegCourse_id, Total_Amount
 	 *@throws Exception
 	 * */
 	public void Payment_fees(int stid, String paymode) throws Exception{
-		 try {
-			  stdo.Payment_fees(stid, paymode);
-		 }catch(Exception se)
-		 {
+		try {
+			stdo.Payment_fees(stid, paymode);
+		}catch(Exception se)
+		{
 			System.out.println(se.getMessage());
-		 }
+		}
 	}
 
 	/**
@@ -101,39 +101,39 @@ public class StudentService implements StudentInterface {
 	 *@param Student_Name, Qualification, Branch, Contact_Number, Address
 	 *
 	 * */
-	 
+
 	public void StudentDetail(String name,String quali,String branch,String contact,String address)
 	{
-	      try {
-              urs.StudentDetail(name, quali, branch, contact, address);
-	      }catch(Exception se)
-	      {
-	    	  System.out.println(se.getMessage());
-	      }
+		try {
+			urs.StudentDetail(name, quali, branch, contact, address);
+		}catch(Exception se)
+		{
+			System.out.println(se.getMessage());
+		}
 	}
 
 	/**
-     * Method for adding payment mode details(credit/debit card).
-	  * @param Card_Number, Upi, Expiry_Date, CVV, StUdent_ID
-	  */
-	
+	 * Method for adding payment mode details(credit/debit card).
+	 * @param Card_Number, Upi, Expiry_Date, CVV, StUdent_ID
+	 */
+
 	public void  pay_mode_detail(String cardno,String upi,String ex_date, int cvv,int stid)
 	{
 		try {
-              stdo.pay_mode_detail(cardno, upi, ex_date, cvv, stid);	
-              
+			stdo.pay_mode_detail(cardno, upi, ex_date, cvv, stid);	
+
 		}catch(Exception se)
 		{
-			 System.out.println(se.getMessage());
+			System.out.println(se.getMessage());
 		}
-	
+
 	}
-	
+
 
 	/**
-     * Method showing all courses which is register by student.
-     * @throws NotRegister
-     */
+	 * Method showing all courses which is register by student.
+	 * @throws NotRegister
+	 */
 	public void ViewRegisterCourses(int stid) throws NotRegister
 	{
 		try {
@@ -142,6 +142,6 @@ public class StudentService implements StudentInterface {
 		{
 			System.out.println(se.getMessage());
 		}
-		
+
 	}
 }

@@ -5,7 +5,7 @@ import com.crs.ibm.exception.NoDataFound;
 import com.crs.ibm.exception.UserNotExists;
 
 public interface ProfessorInterface {
-	
+
 	public void getEnrolledStudent() throws NoDataFound;
 	/**
 	 * Method to fetch the student detail from the student table. 

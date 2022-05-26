@@ -1,3 +1,14 @@
+/**
+ * @author 003NRH744
+ * Group Members':
+ * 1.Shubham Choudhary
+ * 2.Nishant Chaudhari
+ * 3.KirubaKaran
+ * 4.Raghvedra
+ * 5.Ravikumar Lakshatwar
+ * 6.Penke Hemant Kumar
+ * 
+ */
 package com.crs.ibm.application;
 
 import com.crs.ibm.bean.Student;
@@ -37,7 +48,7 @@ public class CRSApplication {
 				user.login();
 				break;
 
-			// New Registration for users
+				// New Registration for users
 			case 2:
 
 				String role = null;
@@ -68,7 +79,7 @@ public class CRSApplication {
 				}
 				break;
 
-			// change password field 
+				// change password field 
 			case 3:
 				String role1 = null;
 				System.out.println("Enter the mail id");
@@ -91,7 +102,7 @@ public class CRSApplication {
 
 				break;
 
-			// logout Session
+				// logout Session
 			case 4:
 				System.out.println("successfully logout");
 				System.exit(0);

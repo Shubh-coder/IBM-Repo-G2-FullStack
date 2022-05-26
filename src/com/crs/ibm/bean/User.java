@@ -37,7 +37,7 @@ public class User {
 	private String LastName;
 	private String EmailId;
 	protected String Password;
-	
-	
-	
+
+
+
 }

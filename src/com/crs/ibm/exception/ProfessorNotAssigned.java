@@ -7,5 +7,5 @@ public class ProfessorNotAssigned extends Exception {
 	public ProfessorNotAssigned(String msg) {
 		super(msg);
 	}
-	
+
 }

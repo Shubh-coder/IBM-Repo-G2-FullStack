@@ -14,7 +14,7 @@ import com.crs.ibm.exception.ProfessorNotAssigned;
 import com.crs.ibm.exception.RegistrationException;
 import com.crs.ibm.exception.UserNotApproved;
 import com.crs.ibm.exception.UserNotExists;
- 
+
 
 public class AdminService implements AdminInterface{
 	AdminDAOInterface addo= new AdminDAO();
@@ -70,20 +70,20 @@ public class AdminService implements AdminInterface{
 			throw e;
 		}
 	}
-	 /**
+	/**
 	 * Method for changing the user password
 	 * @param mail id , user role
 	 * @exception UserNotExists
 	 */
 	public void passwordReviewer(String email1, String role)  throws UserNotExists{
-		
+
 		// TODO Auto-generated method stub
 		try {
 			usdo.passwordReviwer( email1, role);
 		}catch(UserNotExists e) {
 			throw e;
 		}
-		
+
 	}
 	/**
 	 * Method to assign a professor for a course
@@ -108,6 +108,6 @@ public class AdminService implements AdminInterface{
 			throw e;
 		}
 	}
- 
-	
+
+
 }

@@ -11,7 +11,7 @@ import java.sql.SQLException;
  */
 public class UserNotExists extends Exception {
 	public UserNotExists() {
-	super("Sorry we can't find you, rather you are not registered or your Approval is pending!!");
+		super("Sorry we can't find you, rather you are not registered or your Approval is pending!!");
 	}
 	public UserNotExists(String message) {
 		super(message);

@@ -24,7 +24,7 @@ public class ProfessorService implements ProfessorInterface {
 		}catch(NoDataFound e) {
 			throw e;
 		}
-		
+
 	}
 
 	/**
@@ -39,11 +39,11 @@ public class ProfessorService implements ProfessorInterface {
 		}catch(GradeNotAssigned | UserNotExists e) {
 			throw e;
 		}
-		
+
 	}
 
 
-	
-	 
+
+
 
 }

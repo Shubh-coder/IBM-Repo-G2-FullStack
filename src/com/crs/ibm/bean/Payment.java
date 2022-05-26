@@ -1,7 +1,7 @@
 package com.crs.ibm.bean;
 
 public class Payment {
-	
+
 	private String PaymentId;
 	public String getPaymentId() {
 		return PaymentId;

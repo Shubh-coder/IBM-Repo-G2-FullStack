@@ -23,7 +23,7 @@ public interface StudentInterface {
 	 * @param student_id and course_id
 	 * @throws NotRemoved
 	 */
-	
+
 	public void CourseRegistration()throws NotRegister;
 	/**
 	 * Method to see the course before adding 
@@ -56,13 +56,13 @@ public interface StudentInterface {
 
 
 	public void  pay_mode_detail(String cardno,String upi,String ex_date, int cvv,int stid);
-	 /**
-		 * Method for adding payment mode details(credit/debit card).
-		 * @param Card_Number, Upi, Expiry_Date, CVV, StUdent_ID
-		 */
+	/**
+	 * Method for adding payment mode details(credit/debit card).
+	 * @param Card_Number, Upi, Expiry_Date, CVV, StUdent_ID
+	 */
 	public void ViewRegisterCourses(int stid) throws NotRegister;
 	/**
-     * Method showing all courses which is register by student.
-     * @throws NotRegister
-     */
+	 * Method showing all courses which is register by student.
+	 * @throws NotRegister
+	 */
 }

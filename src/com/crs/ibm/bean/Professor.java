@@ -1,10 +1,10 @@
 package com.crs.ibm.bean;
 
 public class Professor {
-	
-	
-	 private String ProfessorId;
-	 public String getProfessorId() {
+
+
+	private String ProfessorId;
+	public String getProfessorId() {
 		return ProfessorId;
 	}
 	public void setProfessorId(String professorId) {
@@ -29,7 +29,7 @@ public class Professor {
 		Department = department;
 	}
 	private String ProfessorName;
-	 private String TeachCourse;
-	 private String Department;
-	 
+	private String TeachCourse;
+	private String Department;
+
 }

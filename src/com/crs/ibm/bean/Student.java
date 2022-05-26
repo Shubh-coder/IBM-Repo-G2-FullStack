@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Student {
 
-	 private int StudentId;
-	 public int getStudentId() {
+	private int StudentId;
+	public int getStudentId() {
 		return StudentId;
 	}
 	public void setStudentId(int studentId) {
@@ -55,20 +55,20 @@ public class Student {
 		StudentAddress = studentAddress;
 	}
 	private String StudentName;
-	 private String StudentQualification;
-	 private String StudentBranch;
-	 private String StudentCourse;
-	 private int NumberOfCourse;
-	 private String StudentContactNo;
-	 private String StudentAddress;
-	 public String getStudentGrade() {
+	private String StudentQualification;
+	private String StudentBranch;
+	private String StudentCourse;
+	private int NumberOfCourse;
+	private String StudentContactNo;
+	private String StudentAddress;
+	public String getStudentGrade() {
 		return studentGrade;
 	}
 	public void setStudentGrade(String studentGrade) {
 		this.studentGrade = studentGrade;
 	}
 	private String studentGrade;
-	
+
 	/*
 	 * public Student(int StudentId,String StudentName,String
 	 * StudentQualification,String StudentBranch,String StudentContactNo,String
@@ -79,8 +79,8 @@ public class Student {
 	 * 
 	 * }
 	 */
-	
-		 
-	 
-	 
+
+
+
+
 }

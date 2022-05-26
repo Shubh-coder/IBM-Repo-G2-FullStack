@@ -8,7 +8,7 @@ import com.crs.ibm.exception.NotRemoved;
 
 public interface StudentDAOInterface {
 
-    
+
 	public void AddCourse(String cn, int stid, int crsid) throws CourseNotAdded;
 	/**
 	 * Method for the student to add their desired course
@@ -22,7 +22,7 @@ public interface StudentDAOInterface {
 	 * @throws NotRegister 
 	 * @throws NotRemoved
 	 */
-	
+
 	public void CourseRegistration() throws NotRegister;
 	/**
 	 * Method to register the course before adding 
@@ -44,17 +44,17 @@ public interface StudentDAOInterface {
 	 *@param student_id , Payment_Mode, RegCourse_id, Total_Amount
 	 *@throws 
 	 * */
-	
+
 	public void  pay_mode_detail(String cardno,String upi,String ex_date, int cvv,int stid);
-	 /**
-      * Method for adding payment mode details(credit/debit card).
-	  * @param Card_Number, Upi, Expiry_Date, CVV, StUdent_ID
-	  */
-	
+	/**
+	 * Method for adding payment mode details(credit/debit card).
+	 * @param Card_Number, Upi, Expiry_Date, CVV, StUdent_ID
+	 */
+
 	public void ViewRegisterCourses(int stid) throws NotRegister;
 	/**
-     * Method showing all courses which is register by student.
-     * @throws NotRegister
-     */
-	
+	 * Method showing all courses which is register by student.
+	 * @throws NotRegister
+	 */
+
 }

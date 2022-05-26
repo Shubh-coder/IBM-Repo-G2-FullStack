@@ -51,6 +51,6 @@ public class Course {
 	private int CurrentStudent;
 	private String Instructor;
 	private String CourseSection;
-	
-	
+
+
 }

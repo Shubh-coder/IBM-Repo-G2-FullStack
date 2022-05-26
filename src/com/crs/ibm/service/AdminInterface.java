@@ -23,7 +23,7 @@ public interface AdminInterface {
 	 * @param  email, password
 	 * @throws UserNotExists
 	 */
-	
+
 	public void  addCourse(int csid,String csname,String cssec,String cstype,int csmax,double csprice,int csdur,int csprid) throws CourseNotAdded;
 	/**
 	 * Method to add courses to the course table 
@@ -49,7 +49,7 @@ public interface AdminInterface {
 	 * Method to fetch all the course from course table
 	 * @exception NoDataFound
 	 */
-	
+
 
 
 }
